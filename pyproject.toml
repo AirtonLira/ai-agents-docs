@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "ai-agents"
+version = "0.1.0"
+description = ""
+authors = ["Airton Lira <airton.lira@dock.tech>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+langchain = "^0.3.18"
+requests = "^2.32.3"
+black = "^25.1.0"
+langchain-deepseek = "^0.1.2"
+beautifulsoup4 = "^4.13.3"
+poetry-plugin-dotenv = "^2.7.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
