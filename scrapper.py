@@ -5,7 +5,7 @@ def get_text_from_url(url):
     response = requests.get(url)
 
     if response.status_code == 200:
-        soup = BeautifulSoup(response.content, "html.parse")
+        soup = BeautifulSoup(response.content, "html.parser")
 
         for script_or_style in soup(["script", "style"]):
             script_or_style.decompose()

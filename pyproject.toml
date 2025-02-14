@@ -13,6 +13,7 @@ black = "^25.1.0"
 langchain-deepseek = "^0.1.2"
 beautifulsoup4 = "^4.13.3"
 poetry-plugin-dotenv = "^2.7.3"
+python-dotenv = "^1.0.1"
 
 
 [build-system]

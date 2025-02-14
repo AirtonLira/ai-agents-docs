@@ -4,12 +4,15 @@
 
 import os
 from langchain_openai import ChatOpenAI
+from dotenv import load_dotenv
 from scrapper import get_text_from_url
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain.tools import tool
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.agents import AgentExecutor, create_openai_tools_agent
 
+
+load_dotenv()
 
 def get_response_from_openai(message: str):
 
@@ -66,3 +69,26 @@ prompt = ChatPromptTemplate.from_messages([
 agent = create_openai_tools_agent(llm, toolkit, prompt=prompt)
 
 agent_executor = AgentExecutor(agent=agent, tools=toolkit, verbose=True)
+
+
+def main():
+    while True:
+        try:
+            pergunta = input("\nDigite sua pergunta (ou 'sair' para encerrar): ")
+            
+            if pergunta.lower() == 'sair':
+                print("Até logo!")
+                break
+            
+            resposta = agent_executor.invoke({"input": pergunta})
+            print("\nResposta:", resposta["output"])
+            
+        except KeyboardInterrupt:
+            print("\nPrograma encerrado pelo usuário.")
+            break
+        except Exception as e:
+            print(f"\nOcorreu um erro: {str(e)}")
+
+if __name__ == "__main__":
+    main()
+
